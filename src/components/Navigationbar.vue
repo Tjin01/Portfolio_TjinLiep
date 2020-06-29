@@ -21,32 +21,48 @@ export default {
 .navbar_portfolio{
     width: 100%;
     display: flex;
-    height: 300px;
+    height: 70px;
     margin: 0;
-    background: url('../media/images/pexels-photo.jpg');
-    background-repeat: round;
-    background-size: 600px;
     border-bottom: 1px groove white;
     position: relative;
+    background:#2f2a1a;
+    justify-content: flex-end;
 }
 
 .navbar_portfolio nav {
     position: absolute;
-    top: 0;
-    left: 10px;
+    top: 20px;
+    right: 180px;
 }
 
 .navbar_portfolio li {
     list-style: none;
     font-size: 1.2rem;
     float: left;
-    margin: 5px;
+    margin: 10px;
     letter-spacing: 4px;
     font-family: 'Bangers', cursive;
     cursor: pointer;
     font-weight: 600;
     color: #fff;
+    position: relative;
 }
+
+.navbar_portfolio li::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    border-bottom: 2px solid green;
+    border-radius: 5px;
+    width: 0%;
+    transition: width 1s linear;
+}
+
+.navbar_portfolio li:hover:before {
+    width: 100%;
+    transition: width 1s linear;
+}
+
 
 .navbar_portfolio a {
     text-decoration: none;
@@ -54,26 +70,17 @@ export default {
 }
 
 /* Media Queries */
-@media screen and (max-width: 700px) {
-    .navbar_portfolio{
-     width: 100%;
-     background: url('../media/images/pexels-photo.jpg');
-     background-repeat: round;
-     padding: 100px;
-     border-bottom: none;
+
+@media screen and (max-width: 675px) {
+
+.navbar_portfolio nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
 }
 
-.navbar_portfolio li {
-    list-style: none;
-    font-size: 0.9rem;
-    float: left;
-    margin: 5px;
-    letter-spacing: 4px;
-    font-family: 'Bangers', cursive;
-    cursor: pointer;
-    font-weight: 600;
-    color: #fff;
-}
-}
+
+
 
 </style>

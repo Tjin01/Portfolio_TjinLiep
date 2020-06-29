@@ -1,156 +1,211 @@
 <template>
     <div class="portfolio_projects">
-        <div class="project_1">
-            <h3> Saltbage </h3>
-            <img src="../../media/images/neonpizza.jpg">
-            <div class="tech_stack">
-            <ul>
-            <li><i class="fab fa-vuejs"></i> Vuejs</li>
-            <li><i class="fas fa-database"></i> Mongodb </li>
-            <li><i class="fas fa-server"></i> Express</li>
-            <li><i class="fab fa-node-js"></i> Node</li>
-            <li><i class="fab fa-grav"></i> Restfull Api</li>
-            </ul>
-            </div>
-            <button type="button" v-on:click="saltBage"> Click Here </button>
-        </div>
-        <div class="project_2">
-            <h3> Tjins cooking </h3>
-            <img src="../../media/images/tjinscook.jpeg">
-             <div class="tech_stack">
-            <ul>
-            <li><i class="fab fa-vuejs"></i> Vuejs</li>
-            <li><i class="fas fa-database"></i> Mongodb </li>
-            <li><i class="fas fa-server"></i> Express</li>
-            <li><i class="fab fa-node-js"></i> Node</li>
-            <li><i class="fab fa-grav"></i> GraphQL Api</li>
-            </ul>
-            </div>
-            <button type="button" v-on:click="tjinCook">Click Here</button>
-        </div>
+      <div class="projects">
+          <div class="project_1" v-for="item in data" :key="item.id">
+              <div class="project_description">
+                <h4> {{item.project}} </h4>
+                <p>
+                    {{item.background}}
+                </p>
+                <div class="author">
+                <span>Developed <strong> by </strong></span> <span class="author_name">Donavan Tjin Liep Shie </span>
+                </div> 
+                <button class="visit_website" v-on:click="saltBage(item.link)"> Visit website </button>
+                <div class="underline"></div>
+              </div>
+              <div class="project_images">
+                  <img :src="item.image">
+              </div>
+          </div>
+      </div>
     </div>
 </template>
 
 <script>
+import image1 from '../../media/images/portfolio1.jpg';
+import image2 from '../../media/images/portfolio2.jpg';
+import image3 from '../../media/images/exchange.jpg';
+
 export default {
     name: 'portfoliocomponent',
-    methods: {
-        saltBage() {
-            window.location.href = 'https://aqueous-oasis-88356.herokuapp.com/'
-        },
-        tjinCook() {
-            window.location.href = 'https://cooktjin.herokuapp.com/'
+    data(){
+        return{
+            data: [
+                {background: 'With this web application you can order a pizza and buy a giftcard for someone you would like to share the pizza with. The web application name is called Saltbage with this application. You\'re able to order the best pizza in Amsterdam.',
+                 developer:'Donavan Tjin Liep Shie',
+                 project: 'Saltbage application',
+                 link: 'https://aqueous-oasis-88356.herokuapp.com/',
+                 id: 1,
+                 image: image1}, 
+                {background: 'This web application makes it easy for you to select a suggested foodmeal based on the foodcategory. The core of the application is to help people find the best recipe based on the foodcategory that they would like to eat.',
+                 developer:'Donavan Tjin Liep Shie', 
+                 project: 'Food application',
+                 link: 'https://cooktjin.herokuapp.com/',
+                 id: 2,
+                 image: image2},
+                {
+                 background: 'Let\'s say you\'re in foreign country and you would like to know what the currency is. With this web application you are able to see what the currency is and exchange it with you\'re local currency based on where you are from.',
+                 developer: 'Donavan Tjin Liep Shie',
+                 project: 'Exchange application',
+                 link: 'https://happy-keller-3ac408.netlify.app/',
+                 id: 3,
+                 image: image3},
+            ],
         }
+    },
+    methods: {
+        saltBage(item) {
+           window.open(`${item}`);
+        },
     }
 }
 </script>
 
 <style scoped>
-.portfolio_projects{
-    font-family: 'Bangers', cursive;
-    letter-spacing: 6px;
-    display:flex;
-    flex-direction: column;
+.portfolio_projects {
+    margin-top: 50px;
+}
+
+.projects {
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.project_1 h3, 
-.project_2 h3 {
-    width: 15%;
-    margin: 5px;
-    font-size: 1.4em;
+.project_1{
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    font-family: 'MuseoModerno', cursive;
 }
 
-img {
-    width: 20%;
-    margin: 30px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 1px groove white;
-}
-
-.project_1, 
-.project_2 {
+.project_description{
+    flex: 1;
     position: relative;
-    border-bottom: 1px solid green;
     border-radius: 5px;
-    padding: 20px;
-    margin: 30px;
 }
 
-.project_1 .tech_stack, 
-.project_2 .tech_stack {
-    width: 30%;
-    display: grid;
-    grid-template-columns: 1fr 1fr / -1;
+.project_description h4 {
     position: absolute;
-    top: 60px;
-    left: 330px;
+    top: 23%;
+    left: 15%;
+    font-size: 1.6rem;
 }
 
-.tech_stack li {
-    margin: 5px;
-    border-bottom: 1px groove #fff;
-    border-radius: 4px;
-    font-size: 0.9em;
-    list-style: none;
-    background: #fff;
-    transition: background 3s;
+.project_description p {
+    width: 70%; 
+    font-weight: 600;
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    text-align: left;
+    border-radius: 2px;
+    font-size: 0.8rem;
 }
 
-.tech_stack li i {
-    margin: 5px;
+.project_description .author{
+    position: absolute;
+    top: 62%;
+    left: 15%;
 }
 
-.tech_stack li:hover {
-    background: rgb(245, 209, 144);
-    opacity: 0.8;
-    transition: background ease-in 2s;
-    -webkit-transition: background ease-in 2s;
+.project_description span {
+    font-size: 0.6rem;
+    font-weight: 800;
+    margin: 2px;
 }
 
-.project_1 button,
-.project_2 button {
-    width: 13%;
-    height: 30px;
-    background: rgba(211, 209, 209, 0.527);
-    font-size: 0.9em;
+.author_name{
+    color:#ffa063;
     cursor: pointer;
-    font-family: 'Cutive Mono', monospace;
-    border-radius: 5px;
-    position: sticky;
-    top: 270px;
-    left: 60px;
-    font-weight: bold;
 }
-/* Media Queries */
-@media screen and (min-width: 701px) and (max-width: 1024px) {
-    
-}
-/* Media Queries Mobile devices */
-@media screen and (max-width: 700px) {
 
-.project_1, .project_2{
+.project_images {
+    flex: 1;
+    text-align: center;
+}
+
+.project_images img {
+    width: 70%;
+    max-width: 380px;
+    height: 260px;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+.underline {
+    position: absolute;
+    top: 90%;
+    left: 15%;
+    border-bottom: .0625rem solid #e4e4e4;
+    width: 60%;
+}
+
+
+.visit_website {
+    line-height: 2.3;
+    width: 150px;
+    position: absolute;
+    top: 75%;
+    left: 20%;
+    cursor: pointer;
+    border-style: none;
+    font-family: 'MuseoModerno', cursive;
+    font-size: 12px;
+    padding: 0.25rem;
+    background: #ECF0F1;
+}
+
+.visit_website:hover{
+    background: #76D7C4;
+    transition: background 2s linear;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+.portfolio_projects {
+    margin-top: 10px;
+}
+
+.project_1{
+    flex-direction: column;
+    font-family: 'MuseoModerno', cursive;
     height: 500px;
 }
 
-img {
-    width: 60%;
-}
-.project_1 .tech_stack, 
-.project_2 .tech_stack {
-    top: 240px;
-    left: 130px;
+
+.project_description{
+    flex: 1;
+    position: relative;
+    border-radius: 5px;
 }
 
-.project_1 button,
-.project_2 button {
-    width: 99px;
-    height: 30px;
-    top: 250px;;
-    left: 20px;
-    font-weight: bold;
+.project_images img {
+    width: 70%;
+    max-width: 280px;
+    height: 220px;
 }
+
+
+.project_description h4 {
+    top: 10%;
+    left: 15%;
+    font-size: 1.2rem;
+}
+
+
+.project_description p {
+    width: 70%; 
+    font-weight: 600;
+    top: 22%;
+    left: 15%;
+    font-size: 0.7rem;
+}
+
+
 }
 
 
