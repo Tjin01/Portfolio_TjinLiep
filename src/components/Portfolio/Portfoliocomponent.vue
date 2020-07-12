@@ -25,6 +25,8 @@
 import image1 from '../../media/images/portfolio1.jpg';
 import image2 from '../../media/images/portfolio2.jpg';
 import image3 from '../../media/images/exchange.jpg';
+import image4 from '../../media/images/giphyapp.jpg';
+
 
 export default {
     name: 'portfoliocomponent',
@@ -50,6 +52,14 @@ export default {
                  link: 'https://happy-keller-3ac408.netlify.app/',
                  id: 3,
                  image: image3},
+                {
+                  background: 'In this digital world now a days GIFS are indispensable when you want to have a laugh. GIFs help us accurately convey our thoughts and feelings when we\'re limited to virtual communication. This application helps you to search for a GIFS',
+                  developer: 'Donavan Tjin Liep Shie',
+                  project: 'Giphy application',
+                  link: 'https://romantic-kowalevski-244d92.netlify.app/',
+                  id: 4,
+                  image: image4,
+                },
             ],
         }
     },
